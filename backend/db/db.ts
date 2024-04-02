@@ -31,7 +31,7 @@ async function getTableNames() {
 
   try {
     const result = await client.query(query);
-    return result.rows.map((row) => row.table_name);
+    return result.rows.map((row: { table_name: string }) => row.table_name);
   } catch (error) {
     console.error("Error fetching table names", error);
     throw error;
@@ -39,7 +39,7 @@ async function getTableNames() {
 }
 
 // Function to execute a dynamic query
-async function executeQuery(query) {
+async function executeQuery(query: string) {
   try {
     const result = await client.query(query);
     return result.rows;
