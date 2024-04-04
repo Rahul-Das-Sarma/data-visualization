@@ -18,7 +18,7 @@ async function fetchDataAndQuery() {
     // Use map instead of forEach to create an array of promises
     const promises = tableNames.map(async (tableName: string) => {
       const dynamicQuery = `SELECT * FROM "${tableName}"`;
-      const result = await db.executeQuery(dynamicQuery);
+      const result = await db.executeQuery(dynamicQuery, [100]);
       finalRes.push({ table_name: tableName, table: result });
     });
 
